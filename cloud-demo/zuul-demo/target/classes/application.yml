@@ -1,0 +1,18 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: zuul-demo
+eureka:
+  client:
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:8761/eureka # 去这个地址拉取服务
+zuul:
+  routes:
+    user-service: /user/** # 下面的简化版配置，也可以不配置（默认就是这样的），也可自定义
+  ignored-services: # 配置不对外暴露的服务
+    - consumer-demo
+#    user:
+#      path: /user-service/**
+#      serviceId: user-service # 默认实现了负载均衡
+#      url: http://127.0.0.1:8081 # 这样就写死了url，不够优雅，改配置成服务id
