@@ -16,3 +16,15 @@ zuul:
 #      path: /user-service/**
 #      serviceId: user-service # 默认实现了负载均衡
 #      url: http://127.0.0.1:8081 # 这样就写死了url，不够优雅，改配置成服务id
+ribbon:
+  ConnectTimeout: 500 # Ribbon的连接超时时间
+  ReadTimeout: 2000 # Ribbon的数据读取超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 # 服务请求超时自动降级时间
+
+# Ribbon的超时时长，真实值是(read + connect) * 2, 必须小于hystrix的自动降级时间
