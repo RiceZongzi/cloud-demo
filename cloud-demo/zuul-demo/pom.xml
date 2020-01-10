@@ -12,6 +12,7 @@
     <artifactId>zuul-demo</artifactId>
 
     <dependencies>
+        <!--网关 Gateway-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
